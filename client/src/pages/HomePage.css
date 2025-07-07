@@ -1,0 +1,49 @@
+.container {
+  text-align: center;
+  /* margin-top: 10px; */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url("https://excelr.in/data_analyst_course_bangalore/assets/images/DA_Banner.jpg");
+  /* background: linear-gradient(gray,black); */
+  background-repeat: no-repeat;
+  background-size: 100% 900px;
+  min-height: 70vh;
+  padding-top: 150px;
+  /* padding: 20px; */
+}
+
+.ttitle {
+  font-size: 48px;
+  color: #c7cace;
+  margin-bottom: 10px;
+  cursor:context-menu;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #2ba1a1;
+  margin-bottom: 40px;
+}
+.subtitle:hover{
+    color: #7097b0;
+}
+
+.buttons {
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 12px 30px;
+  font-size: 18px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: white;
+  color: #3498db;
+}

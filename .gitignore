@@ -1,0 +1,39 @@
+# === Node modules ===
+client/node_modules/
+Backend/node_modules/
+
+# === Build directories ===
+client/build/
+Backend/build/
+dist/
+
+# === Environment variables ===
+client/.env
+client/.env.local
+Backend/.env
+Backend/.env.local
+
+# === Logs ===
+*.log
+logs/
+Backend/logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# === System files ===
+.DS_Store
+Thumbs.db
+
+# === IDE/editor config ===
+.vscode/
+.idea/
+*.swp
+
+# === Test coverage ===
+coverage/
+Backend/coverage/
+
+# === Misc ===
+*.bak
+*.tmp

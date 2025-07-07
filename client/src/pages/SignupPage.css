@@ -1,0 +1,89 @@
+.scontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #2c3e50, #3498db);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sbox {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  text-align: center;
+}
+
+.sbox h2 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.sbox input,
+.sbox select {
+  display: block;
+  width: 100%;
+ padding: 12px;
+margin: 10px  auto;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.sbox input:hover{
+    box-shadow:0 10px 20px rgba(59, 64, 110, 0.2) ;
+}
+.sbox button {
+  padding: 12px 20px;
+  width: 100%;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.sbox button:hover {
+  background-color: #2980b9;
+}
+
+.sbox p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.sbox a {
+  color: #3498db;
+  text-decoration: none;
+}
+.sbox a:hover {
+  text-decoration: underline;
+}
+
+.e-pop {
+  background-color: #ffe6e6;
+  color: #d8000c;
+  border: 1px solid #d8000c;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
