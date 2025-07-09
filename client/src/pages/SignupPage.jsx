@@ -28,7 +28,7 @@ const handleSignup = async () => {
 
     
     if (role === "admin") {
-      navigate("/admin/dashboard");
+      navigate("/admin");
     } else {
       navigate("/student");
     }
