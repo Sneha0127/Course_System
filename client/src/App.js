@@ -6,6 +6,7 @@ import StudentDashboard from "./pages/StudentDashboard";
 import HomePage from "./pages/HomePage";
 import SignupPage from "./pages/SignupPage";
 import CourseDetails from "./pages/CourseDetails";
+import ManageCourses from "./pages/ManageCourses";
 // import AdminSignupPage from "./pages/AdminSignupPage";
 
 
@@ -18,6 +19,7 @@ function App() {
         {/* <Route path="/admin-signup" element={ <AdminSignupPage/>} /> */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/admin" element={<AdminDashboard />} />
+         <Route path="/admin/manage-courses" element={<ManageCourses />} />
         <Route path="/student" element={<StudentDashboard />} />
         <Route path="/course/:courseId" element={<CourseDetails />} />
       </Routes>

@@ -12,23 +12,32 @@ function SignupPage() {
   const [loading, setLoading] = useState(false); 
   const navigate = useNavigate();
 
-  const handleSignup = async () => {
-    setLoading(true);
-    try {
-      await axios.post("http://localhost:5000/api/auth/signup", {
-        name: name.trim(),
-        email: email.trim(),
-        password,
-        role,
-      });
+const handleSignup = async () => {
+  setLoading(true);
+  try {
+    const response = await axios.post("http://localhost:5000/api/auth/signup", {
+      name: name.trim(),
+      email: email.trim(),
+      password,
+      role,
+    });
 
-      navigate("/login");
-    } catch (err) {
-      setError("SignUp Failed. You already have an account!!");
-      setTimeout(() => setError(""), 3000);
+    // Optionally store the token if returned (adjust this if backend sends it)
+    localStorage.setItem("token", response.data.token);
+    localStorage.setItem("role", role);
+
+    
+    if (role === "admin") {
+      navigate("/admin/dashboard");
+    } else {
+      navigate("/student");
     }
-    setLoading(false);
-  };
+  } catch (err) {
+    setError("SignUp Failed. You already have an account!!");
+    setTimeout(() => setError(""), 3000);
+  }
+  setLoading(false);
+};
 
   return (
     <div className="scontainer">

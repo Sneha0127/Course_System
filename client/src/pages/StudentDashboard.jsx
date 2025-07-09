@@ -57,7 +57,8 @@ function StudentDashboard() {
       setEnrolled(enrolledRes.data);
     } catch (error) {
       console.error("Enrollment failed:", error.response?.data || error.message);
-      alert("Failed to enroll.");
+     alert("Failed to enroll: " + (error.response?.data?.message || error.message));
+
     }
   };
 
@@ -104,7 +105,7 @@ function StudentDashboard() {
            <p>
             {course.description.slice(0, 100) + "..."}
          
-         <button onClick={() => navigate(`/course/${course._id}`)}>View</button>
+         <button  className="btn-1" onClick={() => navigate(`/course/${course._id}`) }>View</button>
           </p>
 
             <p><strong>Price:</strong> ₹{course.price || 0}</p>

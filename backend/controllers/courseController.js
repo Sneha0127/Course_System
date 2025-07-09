@@ -36,15 +36,19 @@ const enrollInCourse = async (req, res) => {
     if (req.user.role !== "student") {
       return res.status(403).json({ message: "Access denied. Students only." });
     }
+    console.log("req.user:", req.user);
 
     const courseId = req.params.courseId;
 
     const course = await Course.findById(courseId);
-    const student = await User.findById(req.user.id);
+    const student = await User.findById(req.user.userId);
+    
 
-    if (!course || !student) {
-      return res.status(404).json({ message: "Course or student not found" });
-    }
+    if (!course|| !student) {
+  return res.status(404).json({ message: "Course or Student not found" });
+   }
+
+
 
     if (student.enrolledCourses.includes(courseId)) {
       return res.status(400).json({ message: "Already enrolled in this course" });
@@ -55,14 +59,15 @@ const enrollInCourse = async (req, res) => {
 
     res.json({ message: "Enrolled successfully" });
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
-  }
+  console.error("Enrollment error:", error);  // add this
+  res.status(500).json({ message: error.message || "Server error" });
+}
 };
 
 // Student views enrolled courses
 const getEnrolledCourses = async (req, res) => {
   try {
-    const student = await User.findById(req.user.id).populate("enrolledCourses");
+     const student = await User.findById(req.user.userId).populate("enrolledCourses");
 
     if (!student) {
       return res.status(404).json({ message: "Student not found" });

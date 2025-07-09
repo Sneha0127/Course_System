@@ -1,0 +1,102 @@
+.course-details {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: fadeIn 0.5s ease-in;
+  transition: transform 0.3s;
+}
+
+.course-details:hover {
+  transform: translateY(-5px);
+}
+
+.course-details h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.course-details img {
+  display: block;
+  margin: 0 auto 20px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.course-details img:hover {
+  transform: scale(1.03);
+}
+
+.course-details p {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.course-details strong {
+  color: #222;
+}
+
+.btnn {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btnn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+button {
+  background-color: #f0f0f0;
+  border: none;
+  color: #333;
+  padding: 8px 16px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #e0e0e0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .course-details {
+    padding: 20px;
+  }
+
+  .btnn, button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .course-details h2 {
+    font-size: 1.5rem;
+  }
+}

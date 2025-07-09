@@ -5,29 +5,34 @@ import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 
 function LoginPage() {
-  const [role, setRole] = useState("student");
+  // const [role, setRole] = useState("student");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); 
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
-        email,
-        password,
-        role,
-      });
+  try {
+    const response = await axios.post("http://localhost:5000/api/auth/login", {
+      email,password,
+    });
 
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("role", res.data.role);
+    const token = response.data.token;
+    const role = response.data.role;
 
-      role === "admin" ? navigate("/admin") : navigate("/student");
-    } catch (err) {
-      setError("Login failed. Please check your credentials."); 
-      setTimeout(() => setError(""), 4000); 
+    localStorage.setItem("token", token);
+    localStorage.setItem("role", role);
+
+    if (role === "admin") {
+      navigate("/admin");
+    } else {
+      navigate("/student");
     }
-  };
+  } catch (err) {
+    setError("Login failed. Invalid credentials.");
+    setTimeout(() => setError(""), 3000);
+  }
+};
 
   return (
     <div className="lcontainer">
@@ -42,10 +47,10 @@ function LoginPage() {
 
         {error && <div className="error-popup">{error}</div>}
 
-        <select value={role} onChange={(e) => setRole(e.target.value)} required>
+        {/* <select value={role} onChange={(e) => setRole(e.target.value)} required>
           <option value="student">Student</option>
           <option value="admin">Admin</option>
-        </select>
+        </select> */}
 
         <input
           type="email"
