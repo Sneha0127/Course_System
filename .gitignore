@@ -7,12 +7,6 @@ client/build/
 Backend/build/
 dist/
 
-# === Environment variables ===
-client/.env
-client/.env.local
-Backend/.env
-Backend/.env.local
-
 # === Logs ===
 *.log
 logs/
