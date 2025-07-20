@@ -1,0 +1,69 @@
+.student-container {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  border: 2px ridge rgb(43, 42, 42);
+  border-radius: 10px;
+  width: 500px;
+  height: 450px;
+  margin-left: 350px;
+  background-color: rgb(187, 187, 205);
+  transition: all 0.3s ease;
+}
+
+.student-container:hover{
+    transform: scale(1.1);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+
+}
+
+.student-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.student-container img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.student-container p {
+  font-size: 16px;
+  margin: 6px 0;
+  color: #444;
+}
+
+.progress-bar-wrapper {
+  margin: 20px auto;
+  width: 80%;
+  max-width: 300px;
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  background: green;
+  color: white;
+  padding: 5px;
+  transition: width 0.5s ease;
+  text-align: left;
+}
+
+.remove-btn {
+  background: red;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background-color: darkred;
+}

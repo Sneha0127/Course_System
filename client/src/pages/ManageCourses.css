@@ -93,7 +93,14 @@
   padding: 10px 0;
   border-bottom: 1px solid #eee;
   display: flex;
-  justify-content: space-between;
+
+  /* justify-content: space-between; */
+}
+
+.ss{
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 18px;
 }
 
 .students-section button {

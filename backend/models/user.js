@@ -5,7 +5,16 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true ,required:true},
   password: String,
   role: { type: String, enum: ["student", "admin"] },
-  enrolledCourses: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }],
+  age: Number,
+  gender: String,
+  profilePicture: String, // store URL or base64
+  description: String,
+ enrolledCourses: [
+    {
+      course: { type: mongoose.Schema.Types.ObjectId, ref: "Course" },
+      enrollmentDate: { type: Date, default: Date.now }
+    }
+  ]
 });
 
 module.exports = mongoose.model("user", userSchema);

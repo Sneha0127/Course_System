@@ -36,44 +36,59 @@ const enrollInCourse = async (req, res) => {
     if (req.user.role !== "student") {
       return res.status(403).json({ message: "Access denied. Students only." });
     }
-    console.log("req.user:", req.user);
 
     const courseId = req.params.courseId;
-
     const course = await Course.findById(courseId);
-    const student = await User.findById(req.user.userId);
-    
+    const student = await User.findById(req.user.id);
 
-    if (!course|| !student) {
-  return res.status(404).json({ message: "Course or Student not found" });
-   }
-
-
-
-    if (student.enrolledCourses.includes(courseId)) {
-      return res.status(400).json({ message: "Already enrolled in this course" });
+    if (!course || !student) {
+      return res.status(404).json({ message: "Course or Student not found" });
     }
 
-    student.enrolledCourses.push(courseId);
-    await student.save();
+   let alreadyEnrolled = false;
+for (let i = 0; i < student.enrolledCourses.length; i++) {
+  const entry = student.enrolledCourses[i];
+  if (entry.course && entry.course.toString() === courseId) { //if entry.course is present then only chage to string , preventing null values or undefined
+    alreadyEnrolled = true;
+    break;
+  }
+}
+if(alreadyEnrolled){
+  return res.json({message:"Already Enrolled !!"})
+}
 
+    student.enrolledCourses.push({
+      course: courseId,
+      enrollmentDate: new Date()
+    });
+
+    await student.save();
     res.json({ message: "Enrolled successfully" });
   } catch (error) {
-  console.error("Enrollment error:", error);  // add this
-  res.status(500).json({ message: error.message || "Server error" });
-}
+    console.error("Enrollment error:", error);
+    res.status(500).json({ message: error.message || "Server error" });
+  }
 };
 
 // Student views enrolled courses
 const getEnrolledCourses = async (req, res) => {
   try {
-     const student = await User.findById(req.user.userId).populate("enrolledCourses");
+    const student = await User.findById(req.user.id).populate("enrolledCourses.course");
 
     if (!student) {
       return res.status(404).json({ message: "Student not found" });
     }
 
-    res.json(student.enrolledCourses);
+    const enrolledCourses = student.enrolledCourses.map(entry => ({
+      _id: entry.course._id,
+      title: entry.course.title,
+      description: entry.course.description,
+      price: entry.course.price,
+      image: entry.course.image,
+      enrollmentDate: entry.enrollmentDate
+    }));
+
+    res.json(enrolledCourses);
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }
@@ -87,14 +102,32 @@ const getStudentsInCourse = async (req, res) => {
     }
 
     const courseId = req.params.courseId;
+    const students = await User.find({
+      role: "student",
+      "enrolledCourses.course": courseId,
+    }).select("name email profilePicture enrolledCourses");
 
-    const students = await User.find({ role: "student", enrolledCourses: courseId }).select("name email");
+    const filtered = students.map((student) => {
+      const courseData = student.enrolledCourses.find(
+        (entry) => entry.course && entry.course.toString() === courseId
+      );
+    console.log(student.profilePicture);
+      return {
+        _id: student._id,
+        name: student.name,
+        email: student.email,
+        profilePicture: student.profilePicture || null,
+        enrollmentDate: courseData?.enrollmentDate || null,
+      };
+    });
 
-    res.json(students);
+    res.json(filtered);
   } catch (error) {
+    console.error("Error fetching students in course:", error);
     res.status(500).json({ message: "Server error" });
   }
 };
+
 
 // delete course
 const deleteCourse = async (req, res) => {
@@ -152,8 +185,10 @@ const removeStudent = async (req, res) => {
 
     if (!student) return res.status(404).json({ message: "Student not found" });
 
-    student.enrolledCourses = student.enrolledCourses.filter(id => id.toString() !== courseId);
-    await student.save();
+    student.enrolledCourses = student.enrolledCourses.filter(
+      (entry) => entry.course.toString() !== courseId
+    );
+        await student.save();
 
     res.json({ message: "Student removed from course" });
   } catch (error) {

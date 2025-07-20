@@ -3,6 +3,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./ManageCourses.css";
 
+const DEFAULT_IMAGE = 'data:image/jpeg;base64,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'; // You should place this image in public folder
+
+
 function ManageCourses() {
   const [courses, setCourses] = useState([]);
   const [students, setStudents] = useState([]);
@@ -48,21 +51,21 @@ function ManageCourses() {
     }
   };
 
-  const handleRemoveStudent = async (studentId) => {
-    if (!selectedCourseId) return;
+  // const handleRemoveStudent = async (studentId) => {
+  //   if (!selectedCourseId) return;
 
-    if (!window.confirm("Remove this student from the course?")) return;
+  //   if (!window.confirm("Remove this student from the course?")) return;
 
-    try {
-      await axios.delete(
-        `http://localhost:5000/api/courses/admin/course/${selectedCourseId}/student/${studentId}`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      handleViewStudents(selectedCourseId, selectedCourseName);
-    } catch (err) {
-      console.error("Error removing student:", err.message);
-    }
-  };
+  //   try {
+  //     await axios.delete(
+  //       `http://localhost:5000/api/courses/admin/course/${selectedCourseId}/student/${studentId}`,
+  //       { headers: { Authorization: `Bearer ${token}` } }
+  //     );
+  //     handleViewStudents(selectedCourseId, selectedCourseName);
+  //   } catch (err) {
+  //     console.error("Error removing student:", err.message);
+  //   }
+  // };
 
   useEffect(() => {
     fetchCourses();
@@ -70,7 +73,7 @@ function ManageCourses() {
 
   return (
     <div className="m-container">
-      <button onClick={() => navigate(-1)}>← Back</button>
+      <button onClick={() => navigate("/admin")}>← Back</button>
       <h2>Manage Courses</h2>
       <ul className="course-list">
         {courses.map((course) => (
@@ -88,12 +91,36 @@ function ManageCourses() {
         <div className="students-section">
           <h3>Students Enrolled in {selectedCourseName}</h3>
           <ul>
-            {students.map((student) => (
-              <li key={student._id}>
-                {student.name} ({student.email}){" "}
-                <button onClick={() => handleRemoveStudent(student._id)}>Remove</button>
-              </li>
-            ))}
+           {students.map((student) => (
+      <li key={student._id} className="student-item" >
+       <img
+        src= {student.profilePicture
+      ? `http://localhost:5000${student.profilePicture}`
+      : DEFAULT_IMAGE}
+        // {`http://localhost:5000${student.profilePicture}`}
+        alt="Profile"
+        style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+        
+      />
+        <div className="ss">
+          <strong>{student.name}</strong> ({student.email})
+          {/* <div>Enrolled on: {new Date(student.enrollmentDate).toLocaleDateString()}</div> */}
+        </div>
+    <button
+  onClick={() =>
+    navigate("/studentEnrolled", {
+      state: {
+        student,
+        courseId: selectedCourseId,
+        courseName: selectedCourseName,
+      }, }) }
+>
+  View
+</button>
+
+        {/* <button onClick={() => handleRemoveStudent(student._id)}>Remove</button> */}
+      </li>
+    ))}
           </ul>
         </div>
       )}

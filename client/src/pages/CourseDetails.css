@@ -27,6 +27,8 @@
   width: 100%;
   max-width: 500px;
   height: auto;
+  /* height: 300px;
+  object-fit: cover; */
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;

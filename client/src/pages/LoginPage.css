@@ -3,20 +3,30 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  background: 
+    linear-gradient(135deg, rgba(12, 20, 33, 0.8), rgba(35, 49, 70, 0.8)),
+    url('https://focus.namirial.com/en/wp-content/uploads/sites/4/2023/09/AI-machine-learning.jpeg') no-repeat center center / cover;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
+} 
 
 .lbox {
-  background-color: #fff;
+ background-color: rgba(255, 255, 255, 0.95); 
+   position: relative;  
+  z-index: 2;         
   margin-top: 0px;
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 320px;
+   transition: all 0.3s ease;
 }
 
+.lbox:hover{
+  box-shadow:  0px 20px 15px rgba(0, 0, 0, 0.1);
+  /* width: 340px; */
+  transform: scale(1.1);
+}
 .lbox h2 {
   margin-bottom: 20px;
   color: #333;

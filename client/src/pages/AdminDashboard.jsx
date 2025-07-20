@@ -17,32 +17,34 @@ function AdminDashboard() {
   const courseToEdit = queryParams.get("edit");
 
   useEffect(() => {
-    if (!token) {
-      navigate("/login");
-      return;
-    }
+  const role = localStorage.getItem("role");
 
-    if (courseToEdit) {
-      const fetchCourse = async () => {
-        try {
-          const res = await axios.get(`http://localhost:5000/api/courses/${courseToEdit}`, {
-            headers: { Authorization: `Bearer ${token}` },
-          });
-  // this gets entire previous course data back onto the screen in the given columns and then sets the courseId to the present course id and this triggers handleCreateOrUpdate function
-          const course = res.data;
-          setTitle(course.title);
-          setDescription(course.description);
-          setImage(course.image);
-          setPrice(course.price);
-          setEditCourseId(course._id);
-        } catch (err) {
-          console.error("Failed to fetch course for editing", err.message);
-        }
-      };
+  if (!token || role !== "admin") {
+    localStorage.clear(); 
+    navigate("/login", { replace: true });
+    return;
+  }
 
-      fetchCourse();
-    }
-  }, [courseToEdit, token, navigate]);
+  if (courseToEdit) {
+    const fetchCourse = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5000/api/courses/${courseToEdit}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const course = res.data;
+        setTitle(course.title);
+        setDescription(course.description);
+        setImage(course.image);
+        setPrice(course.price);
+        setEditCourseId(course._id);
+      } catch (err) {
+        console.error("Failed to fetch course for editing", err.message);
+      }
+    };
+
+    fetchCourse();
+  }
+}, [courseToEdit, token, navigate]);
 
   const handleCreateOrUpdate = async () => {
     try {
@@ -76,12 +78,17 @@ function AdminDashboard() {
   };
 
   return (
+    <div className="outer">
+        <h1 className="mainn1" onClick={()=>{navigate("/main")}}>@Courses.inn</h1>
+       <button className="btnn1" onClick={() => navigate('/admin/profile')}>Profile</button>
+      <button className="btnn2" onClick={handleLogout}>Logout</button>
+
     <div className="a-container">
       <div className="a-header">
-        <h2>Admin Dashboard</h2>
+        
+        <h2>Admin's Creation</h2>
         <div>
           <button onClick={() => navigate("/admin/manage-courses")}>Manage Courses</button>
-          <button onClick={handleLogout}>Logout</button>
         </div>
       </div>
 
@@ -91,7 +98,7 @@ function AdminDashboard() {
           placeholder="Course Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-        />
+          />
 
         <textarea
           placeholder="Course Description"
@@ -105,14 +112,14 @@ function AdminDashboard() {
           placeholder="Image URL"
           value={image}
           onChange={(e) => setImage(e.target.value)}
-        />
+          />
 
         <input
           type="number"
           placeholder="Price (in ₹)"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
-        />
+          />
 
         <div>
           <button onClick={handleCreateOrUpdate}>
@@ -138,6 +145,7 @@ function AdminDashboard() {
         </div>
       </div>
     </div>
+</div>
   );
 }
 

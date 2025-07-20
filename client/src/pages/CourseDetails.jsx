@@ -7,6 +7,7 @@ function CourseDetails() {
   const { courseId } = useParams();
   const [course, setCourse] = useState(null);
   const navigate = useNavigate();
+  const role= localStorage.getItem("role");
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -50,12 +51,12 @@ function CourseDetails() {
 
   return (
     <div className="course-details" style={{ padding: "20px" }}>
-      <button onClick={() => navigate(-1)}>← Back</button>
+      <button onClick={() => navigate(`/student`)}>← Back</button>
       <h2>{course.title}</h2>
       <img
         src={course.image || "https://via.placeholder.com/300x160?text=Course+Image"}
         alt={course.title}
-        style={{ width: "300px", height: "160px", objectFit: "cover", borderRadius: "8px" }}
+       
       />
       <p><strong>Description:</strong> {course.description}</p>
       <p><strong>Price:</strong> ₹{course.price || 0}</p>

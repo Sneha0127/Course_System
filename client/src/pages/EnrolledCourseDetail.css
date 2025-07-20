@@ -1,0 +1,75 @@
+.wrappp{
+    background: url("https://collegeinfogeek.com/wp-content/uploads/2018/11/Essential-Books.jpg");
+    background-repeat: no-repeat;
+     background-size: cover;
+    height: 95vh; 
+    width: 100vw;  
+    margin: 0;
+    padding: 0;
+}
+.enrolled-detail {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #dacdcd;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  transition: all ease 0.3s;
+}
+
+.enrolled-detail:hover{
+    transform:scale(1.1);
+}
+
+.enrolled-detail h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.enrolled-detail p {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #555;
+}
+
+.enrolled-detail strong {
+  color: #000;
+}
+
+.progress-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 25px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #4caf50, #81c784);
+  color: white;
+  text-align: center;
+  line-height: 25px;
+  font-weight: bold;
+  transition: width 0.4s ease-in-out;
+}
+
+.enrolled-detail button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.enrolled-detail button:hover {
+  background-color: #0056b3;
+}

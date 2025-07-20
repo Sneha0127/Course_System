@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./StudentDashboard.css"; 
+import "./StudentDashboard.css";
 
 function StudentDashboard() {
   const [courses, setCourses] = useState([]);
   const [enrolled, setEnrolled] = useState([]);
   const [showEnrolled, setShowEnrolled] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
+    const role = localStorage.getItem("role");
+
+    if (!token || role !== "student") {
+      localStorage.clear();
+      navigate("/login", { replace: true });
       return;
     }
 
+    // Fetch courses only if logged in and role is student
     const fetchCourses = async () => {
       try {
         const allCoursesRes = await axios.get("http://localhost:5000/api/courses", {
@@ -33,83 +38,99 @@ function StudentDashboard() {
     };
 
     fetchCourses();
-  }, []);
+  }, [navigate]);
 
-  //   const toggleReadMore = (courseId) => {
-  //  setReadmore((p) => (p=== courseId ? null : courseId));
-  //  };
+ const handleEnroll = async (courseId) => {
+  const token = localStorage.getItem("token");
 
-  const handleEnroll = async (courseId) => {
-    try {
-      const token = localStorage.getItem("token");
-      await axios.post(
-        `http://localhost:5000/api/courses/enroll/${courseId}`,
-        {},
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      alert("Enrolled successfully!");
+  try {
+    const response = await axios.post(
+      `http://localhost:5000/api/courses/enroll/${courseId}`,
+      {},
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
 
-      const enrolledRes = await axios.get("http://localhost:5000/api/courses/my-courses", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setEnrolled(enrolledRes.data);
-    } catch (error) {
-      console.error("Enrollment failed:", error.response?.data || error.message);
-     alert("Failed to enroll: " + (error.response?.data?.message || error.message));
+    alert(response.data.message || "Enrolled successfully!");
 
-    }
+    const enrolledRes = await axios.get("http://localhost:5000/api/courses/my-courses", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    setEnrolled(enrolledRes.data);
+
+  } catch (error) {
+    console.error("Enrollment failed:", error.response?.data || error.message);
+
+    const message =
+      error.response?.data?.message || "Enrollment failed due to server error";
+
+    alert("Failed to enroll: " + message);
+  }
+};
+
+  const filteredCourses = courses.filter((course) =>
+    course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    course.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/login", { replace: true });
   };
 
   return (
     <div className="d-container">
       <div className="d-header">
-        <h2>STUDENT DASHBOARD</h2>
+        <h1 className="mainn" onClick={() => navigate("/main")}>@Courses.inn</h1>
+        <h2>Explore..</h2>
         <div className="header-btns">
           <button onClick={() => setShowEnrolled(!showEnrolled)}>
             {showEnrolled ? "Hide Enrolled Courses" : "View Enrolled Courses"}
           </button>
-          <button
-            onClick={() => {
-              localStorage.removeItem("token");
-              localStorage.removeItem("role");
-              navigate("/login");
-            }}
-          >
-            Logout
-          </button>
+          <button onClick={handleLogout}>Logout</button>
+          <button onClick={() => navigate('/student/profile')}>Profile</button>
         </div>
       </div>
 
+      <input
+        type="text"
+        placeholder="Search courses..."
+        className="search-input"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+
       {showEnrolled && (
         <div>
-          <h3>Your Enrolled Courses</h3>
-          <ul className="enrolled-list">
-            {enrolled.map((course) => (
-              <li key={course._id}>{course.title}</li>
-            ))}
-          </ul>
+          <h3 className="h-view">Your Enrolled Courses</h3>
+         <ul className="enrolled-list">
+          {enrolled.map((course) => (
+            <li key={course._id} onClick={() => navigate(`/enrolled/${course._id}`)} style={{ cursor: "pointer" }}>
+              {course.title}
+            </li>
+          ))}
+        </ul>
         </div>
       )}
 
       <h3 className="hhh">Courses</h3>
       <div className="course-grid">
-        {courses.map((course) => (
+        {filteredCourses.map((course) => (
           <div className="course-card" key={course._id}>
             <img
               src={course.image || "https://via.placeholder.com/200x120?text=Course+Image"}
               alt={course.title}
             />
             <h4>{course.title}</h4>
-           <p>
-            {course.description.slice(0, 100) + "..."}
-         
-         <button  className="btn-1" onClick={() => navigate(`/course/${course._id}`) }>View</button>
-          </p>
-
+            <p>
+              {course.description.slice(0, 100) + "..."}
+              <button className="btn-1" onClick={() => navigate(`/course/${course._id}`)}>
+                View
+              </button>
+            </p>
             <p><strong>Price:</strong> ₹{course.price || 0}</p>
-            <button className="btnn" onClick={() => handleEnroll(course._id)}>Enroll Now</button>
+            <button className="btnn" onClick={() => handleEnroll(course._id)}>
+              Enroll Now
+            </button>
           </div>
         ))}
       </div>

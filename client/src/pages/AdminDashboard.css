@@ -2,19 +2,68 @@
     background-image: url("https://tse1.mm.bing.net/th/id/OIF.quivlbSb736GuujJgcIfIQ?pid=Api&P=0&h=220");
     background-repeat: no-repeat;
 } */
+
+.outer {
+  background: url("https://plat.ai/wp-content/uploads/aibuild.jpg.webp") no-repeat center center;
+  background-size: cover;
+  min-height: 90vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0; 
+}
 .a-container {
-  max-width: 800px;
+  max-width: 2000px;
   margin: auto;
   padding: 30px;
   font-family: "Segoe UI", sans-serif;
-  background-color: #f9f9f9;
+  background-color: #cdc6c6;
   border-radius: 12px;
   box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
 }
 
 .a-container:hover{
     box-shadow: 0 28px 20px rgba(0, 0, 0, 0.1) ;
     transition: 0.3s;
+}
+
+.mainn1{
+  margin-left: 0px;
+  position: absolute;
+  color: rgb(43, 40, 40);
+  top: 0px;
+  left: 5px;
+  background-color: rgb(151, 142, 142);
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mainn1:hover{
+  color: rgb(163, 145, 145);
+  background-color: rgb(58, 50, 50);
+  transform: scale(1.1);
+  
+}
+
+.btnn1{
+  /* margin-left: 400px; */
+  color: white;
+  background-color: #1e88e5;
+  border-radius: 5px;
+  position: absolute;
+  top: 50px;
+  left: 1160px;
+}
+
+.btnn2{
+  color: white;
+  background-color: #1e88e5;
+  border-radius: 5px;
+  position: absolute;
+  top: 50px;
+  left: 1050px;
 }
 
 .a-header {
@@ -26,11 +75,13 @@
 .a-header h2 {
   margin: 0;
   font-size: 28px;
+  font-style: italic;
   color: #333;
 }
 
 .a-header button {
   margin-left: 10px;
+  margin-top: 15px;
   padding: 8px 16px;
   background-color: #1e88e5;
   border: none;
@@ -48,6 +99,7 @@
 .a-form {
   margin-top: 30px;
   display: flex;
+  margin-right: 20px;
   flex-direction: column;
   gap: 16px;
 }

@@ -1,0 +1,108 @@
+.wrapp{
+    /* background-color: rgb(101, 99, 99); */
+    background: url("https://img.freepik.com/premium-photo/image-is-library-with-bookshelves-full-books-books-are-flying-air-library-is-dark-mysterious_14117-261943.jpg");
+    background-repeat: no-repeat;
+     background-size: cover;
+    height: 130vh; 
+    width: 100vw;  
+    margin: 0;
+    padding: 0;
+}
+.profile-container {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 25px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  font-family: Arial, sans-serif;
+  transition: all 0.3s ease;
+}
+
+.profile-container:hover{
+    transform: scale(1.1);
+    box-shadow:0 14px 20px rgba(235, 230, 230, 0.1) ;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 226px;
+}
+
+.edit-button:hover{
+    background-color: #0056b3;
+}
+
+.profile-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.profile-container img {
+  display: block;
+  margin: 0 auto;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  transition: all 0.3s ease;
+}
+.profile-container img:hover{
+    transform: scale(1.1);
+}
+
+/* .profile-container input[type="file"] {
+  display: none;
+} */
+
+
+.profile-container .edit-btn {
+  display: block;
+  margin: 10px auto;
+  background-color: #007bff;
+  color: white;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.profile-container input[type="text"],
+.profile-container input[type="email"],
+.profile-container input[type="number"],
+.profile-container select,
+.profile-container textarea {
+  width: 100%;
+  padding: 10px 12px;
+  /* margin-right: 200px; */
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+/* Submit Button */
+.profile-container button[type="submit"] {
+  width: 100%;
+  padding: 10px 0;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.profile-container button[type="submit"]:hover {
+  background-color: #218838;
+}

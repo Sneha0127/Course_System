@@ -1,0 +1,91 @@
+.mp-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.mp-container {
+  position: relative;
+  z-index: 1;
+  padding: 30px;
+  max-width: 800px;
+  margin: auto;
+  font-family: "Segoe UI", sans-serif;
+  color: #333;
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.mp-wrapper:hover .background-video {
+  opacity: 1;
+}
+
+.mp-container:hover{
+    transform: scale(0.9);
+    border-radius: 50px;
+}
+.mp-container:hover .mp-video {
+  opacity: 1;
+}
+
+.mp-content {
+  position: relative;
+  z-index: 1;
+}
+
+
+.back-button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+.project-title {
+  font-size: 2rem;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+   margin-left: 0px;
+  color: rgb(222, 31, 31);
+  /* background-color: rgb(151, 142, 142); */
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.project-title:hover{
+     color: rgb(151, 142, 142);
+  /* background-color: rgb(222, 31, 31); */
+  transform: scale(1.05);
+}
+.project-description {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  font-family: cursive;
+}
+
+.creator-info {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 5px solid #007bff;
+}
