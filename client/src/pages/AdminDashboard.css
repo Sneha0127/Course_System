@@ -6,7 +6,7 @@
 .outer {
   background: url("https://plat.ai/wp-content/uploads/aibuild.jpg.webp") no-repeat center center;
   background-size: cover;
-  min-height: 90vh; 
+  min-height: 100vh; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,7 +32,9 @@
   margin-left: 0px;
   position: absolute;
   color: rgb(43, 40, 40);
-  top: 0px;
+  top: 20px;
+  font-size: 30px;
+  font-weight: bold;
   left: 5px;
   background-color: rgb(151, 142, 142);
   padding: 5px;
@@ -76,6 +78,7 @@
   margin: 0;
   font-size: 28px;
   font-style: italic;
+  font-weight: 500;
   color: #333;
 }
 

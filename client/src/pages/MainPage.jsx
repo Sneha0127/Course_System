@@ -31,8 +31,8 @@ function MainPage() {
       <div className="creator-info">
         <h3>Know More:</h3>
         <p><strong>Creator:</strong> Sneha Pandey</p>
-        <p><strong>Linkedln:</strong><a href="https://www.linkedin.com/in/sneha-pandey-ab63b7260/">Link</a> </p>
-        <p><strong>Github:</strong><a href="https://github.com/Sneha0127">Link</a> </p>
+        <p><strong>Linkedln:</strong><a href="https://www.linkedin.com/in/sneha-pandey-ab63b7260/"><u>Link</u></a> </p>
+        <p><strong>Github:</strong><a href="https://github.com/Sneha0127"><u>Link</u></a> </p>
         <p><strong>Skills Used:</strong> React, Node.js, Express, MongoDB, CSS</p>
       </div>
     </div>

@@ -26,7 +26,7 @@ function StudentEnrolled() {
         }
       );
       alert("Student removed from the course");
-      navigate("/manage-courses"); // Go back after removal
+      navigate("/admin/manage-courses"); // Go back after removal
     } catch (err) {
       console.error("Error removing student:", err.message);
     }

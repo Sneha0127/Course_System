@@ -37,6 +37,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* text-align: center; */
 }
 
 .d-header h2 {
@@ -64,6 +65,21 @@
   background-color:rgb(155, 208, 208) ;
 }
 
+.btnn-2{
+   margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+   font-family: cursive;
+}
+
+.btnn-2:hover{
+    background-color: #28a745;
+    color: white;
+}
 .header-btns {
   display: block;
   gap: 10px;
@@ -134,6 +150,8 @@
 .mainn{
   margin-left: 0px;
   color: rgb(222, 31, 31);
+  font-size: 30px;
+  font-weight: bold;
   /* background-color: rgb(151, 142, 142); */
   padding: 5px;
   cursor: pointer;

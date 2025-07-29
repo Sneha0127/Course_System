@@ -26,7 +26,6 @@ app.use("/api/courses", courseRoutes);
 app.use("/api/user", userRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB connected");

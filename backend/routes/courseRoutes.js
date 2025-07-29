@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+
 const {
   createCourse,
   getAllCourses,
@@ -11,6 +12,7 @@ const {
   updateCourse,
   removeStudent,
   getCourseById,
+  searchCourses,
 } = require("../controllers/courseController");
 
 const auth = require("../middleware/authMiddleware");
@@ -23,6 +25,7 @@ router.post("/enroll/:courseId", auth, enrollInCourse);
 router.delete("/admin/course/:courseId", auth, deleteCourse);
 router.put("/admin/course/:courseId", auth, updateCourse);
 router.delete("/admin/course/:courseId/student/:studentId", auth, removeStudent);
+router.get('/search', searchCourses);
 router.get("/", auth, getAllCourses);
 // router.get("/courses/:courseId", getCourseById);
 router.get("/:courseId", auth, getCourseById);

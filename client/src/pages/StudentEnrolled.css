@@ -21,6 +21,9 @@
 .student-container h2 {
   margin-bottom: 20px;
   color: #333;
+  font-size: 20px;
+  font-weight: bold;
+
 }
 
 .student-container img {
@@ -29,6 +32,7 @@
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 15px;
+  margin-left: 180px;
 }
 
 .student-container p {

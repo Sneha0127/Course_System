@@ -185,9 +185,9 @@ const removeStudent = async (req, res) => {
 
     if (!student) return res.status(404).json({ message: "Student not found" });
 
-    student.enrolledCourses = student.enrolledCourses.filter(
-      (entry) => entry.course.toString() !== courseId
-    );
+   student.enrolledCourses = student.enrolledCourses.filter(
+  (entry) => entry.course && entry.course.toString() !== courseId
+);
         await student.save();
 
     res.json({ message: "Student removed from course" });
@@ -209,6 +209,27 @@ const getCourseById = async (req, res) => {
   }
 };
 
+// Search courses by title 
+const searchCourses = async (req, res) => {
+  try {
+    const { query } = req.query;
+
+    if (!query || query.length < 2) {
+      return res.status(400).json({ message: "Query too short" });
+    }
+
+    const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const regex = new RegExp(escapedQuery, "i");
+
+    const courses = await Course.find({ title: regex }).select("title _id");
+    res.json(courses);
+  } catch (error) {
+    console.error("Search error:", error);
+    res.status(500).json({ message: "Search failed" });
+  }
+};
+
+
 module.exports = {
   createCourse,
   getAllCourses,
@@ -219,4 +240,5 @@ module.exports = {
   updateCourse,
   removeStudent,
   getCourseById,
+  searchCourses,
 };

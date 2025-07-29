@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import SearchBar from "../components/SearchBar";
 import { useNavigate } from "react-router-dom";
 import "./StudentDashboard.css";
 
@@ -91,13 +92,7 @@ function StudentDashboard() {
         </div>
       </div>
 
-      <input
-        type="text"
-        placeholder="Search courses..."
-        className="search-input"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
+      <SearchBar/>
 
       {showEnrolled && (
         <div>
@@ -115,23 +110,31 @@ function StudentDashboard() {
       <h3 className="hhh">Courses</h3>
       <div className="course-grid">
         {filteredCourses.map((course) => (
-          <div className="course-card" key={course._id}>
-            <img
-              src={course.image || "https://via.placeholder.com/200x120?text=Course+Image"}
-              alt={course.title}
-            />
-            <h4>{course.title}</h4>
-            <p>
-              {course.description.slice(0, 100) + "..."}
-              <button className="btn-1" onClick={() => navigate(`/course/${course._id}`)}>
-                View
-              </button>
-            </p>
-            <p><strong>Price:</strong> ₹{course.price || 0}</p>
-            <button className="btnn" onClick={() => handleEnroll(course._id)}>
-              Enroll Now
-            </button>
-          </div>
+        <div className="course-card" key={course._id}>
+      <img
+        src={course.image || "https://via.placeholder.com/200x120?text=Course+Image"}
+        alt={course.title}
+      />
+      <h4>{course.title}</h4>
+      <p>
+        {course.description.slice(0, 100) + "..."}
+        <button className="btn-1" onClick={() => navigate(`/course/${course._id}`)}>
+          View
+        </button>
+      </p>
+      <p><strong>Price:</strong> ₹{course.price || 0}</p>
+
+  {enrolled.some((en) => en._id === course._id) ? (
+    <button className="btnn-2" disabled>
+      Enrolled
+    </button>
+  ) : (
+    <button className="btnn" onClick={() => handleEnroll(course._id)}>
+      Enroll Now
+    </button>
+  )}
+</div>
+
         ))}
       </div>
     </div>
