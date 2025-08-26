@@ -1,0 +1,79 @@
+.students-progress-container {
+  min-height: 100vh;
+  padding: 30px;
+  background-color: #000; /* Black background */
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.students-progress-container h1 {
+  text-align: center;
+  color: #00ff88; /* Highlighted heading */
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #111; /* Dark background for table */
+  border: 1px solid #00ff88;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 0px 15px rgba(0, 255, 136, 0.3);
+}
+
+thead {
+  background-color: #00ff88;
+}
+
+thead th {
+  color: black;
+  padding: 14px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #1a1a1a; /* Alternate row color */
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #111;
+}
+
+tbody tr:hover {
+  background-color: rgba(0, 255, 136, 0.15);
+}
+
+td {
+  padding: 12px 16px;
+  font-size: 15px;
+  color: white;
+}
+
+td:nth-child(3) {
+  color: #00ff88;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  table {
+    font-size: 14px;
+  }
+
+  thead th {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  td {
+    padding: 10px;
+  }
+}

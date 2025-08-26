@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const authRoutes = require("./routes/authRoutes");
 const courseRoutes = require("./routes/courseRoutes");
-
+const moduleRoutes = require('./routes/moduleRoutes');
 const userRoutes = require("./routes/userRoute");
 const path = require("path");
 
@@ -22,8 +22,8 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/courses", courseRoutes);
-//next two for handling profile thing
 app.use("/api/user", userRoutes);
+app.use('/api/modules', moduleRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 mongoose.connect(process.env.MONGO_URI)

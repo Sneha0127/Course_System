@@ -1,31 +1,32 @@
 .m-container {
   padding: 20px;
   font-family: Arial, sans-serif;
-  background-color: #f7f9fc;
+  background-color: #000; /* Dark background */
+  color: white; /* Default text color */
 }
 
 .m-container button {
-  background-color: #4a90e2;
-  color: white;
-  padding: 6px 12px;
+  background-color: rgb(12, 169, 98); /* Green theme */
+  color: black;
+  padding: 8px 14px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   margin-bottom: 20px;
   cursor: pointer;
   font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease;
 }
 
-.m-container button:hover{
-    background-color: #839cac;
-}
-
-.m-container button:active{
-    background-color: #3c5c81;
+.m-container button:hover {
+  background-color: white;
+  color: rgb(12, 169, 98);
 }
 
 .m-container h2,
 .m-container h3 {
-  color: #333;
+  color: rgb(12, 169, 98);
+  font-weight: bold;
 }
 
 .course-list {
@@ -34,23 +35,28 @@
 }
 
 .course-item {
-  background-color: white;
-  border: 1px solid #ddd;
+  background-color: #111; /* Dark card background */
+  border: 2px solid rgb(12, 169, 98);
   border-radius: 8px;
   padding: 15px;
   margin-bottom: 15px;
-  
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 0 10px rgb(12, 169, 98);
+  transition: all 0.3s ease;
+}
+
+.course-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgb(12, 169, 98);
 }
 
 .course-item strong {
   font-size: 18px;
-  color: #2c3e50;
+  color: rgb(12, 169, 98);
 }
 
 .course-item p {
   margin: 5px 0 10px;
-  color: #555;
+  color: white;
 }
 
 .course-item button {
@@ -59,30 +65,47 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: bold;
+  transition: all 0.3s ease;
 }
 
 .course-item button:nth-child(1) {
-  background-color: #e74c3c; 
+  background-color: red; 
   color: white;
+}
+
+.course-item button:nth-child(1):hover {
+  background-color: white;
+  color: red;
 }
 
 .course-item button:nth-child(2) {
-  background-color: #3498db; 
-  color: white;
+  background-color: rgb(12, 169, 98);
+  color: black;
+}
+
+.course-item button:nth-child(2):hover {
+  background-color: white;
+  color: rgb(12, 169, 98);
 }
 
 .course-item button:nth-child(3) {
-  background-color: #2ecc71; 
-  color: white;
+  background-color: orange; 
+  color: black;
+}
+
+.course-item button:nth-child(3):hover {
+  background-color: white;
+  color: orange;
 }
 
 .students-section {
   margin-top: 30px;
-  background-color: #fff;
+  background-color: #111;
   padding: 20px;
   border-radius: 8px;
-  border: 1px solid #ddd;
+  border: 2px solid rgb(12, 169, 98);
+  box-shadow: 0 0 10px rgb(12, 169, 98);
 }
 
 .students-section ul {
@@ -92,23 +115,27 @@
 
 .students-section li {
   padding: 10px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgba(12, 169, 98, 0.4);
   display: flex;
-
-  /* justify-content: space-between; */
 }
 
-.ss{
+.ss {
   margin-top: 15px;
   margin-left: 10px;
   margin-right: 18px;
 }
 
 .students-section button {
-  background-color: #e67e22;
-  color: white;
+  background-color: rgb(12, 169, 98);
+  color: black;
   padding: 5px 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.students-section button:hover {
+  background-color: white;
+  color: rgb(12, 169, 98);
 }

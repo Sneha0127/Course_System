@@ -49,6 +49,10 @@ function EnrolledCourseDetail() {
         </div>
       </div>
       <button onClick={() => navigate("/student")}>Back to Dashboard</button>
+      <button onClick={() =>
+          navigate(`/student/course/${courseId}/modules`, {
+            state: { courseId },
+          })}>View Modules</button>
     </div>
     </div>
   );
